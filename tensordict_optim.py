@@ -59,7 +59,7 @@ class AdaGrad(Optimizer):
 
 
     @torch.no_grad()
-    def step(self, params, lr, frozen_moment=False):
+    def step(self, params, lr):
         self.moment.add_(params.grad.pow(2))
         params.addcdiv_(params.grad.div, self.moment.sqrt() + self.eps, value=-lr)
         if self.weight_decay is not None:
@@ -81,7 +81,7 @@ class RMSProp(Optimizer):
             params.add_(params, alpha=-lr * self.weight_decay)
 
 class Adam(Optimizer):
-    def __init__(self, param_dict, betas=(0.9, 0.999), eps=1e-8, weight_decay=1e-2):
+    def __init__(self, param_dict, betas=(0.9, 0.999), eps=1e-8, weight_decay=None):
         self.moment = torch.zeros_like(param_dict)
         self.second_moment = torch.zeros_like(param_dict)
 
