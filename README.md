@@ -1,5 +1,5 @@
 # tensordict-optim
-Pytorch omptimizers, implemented for tensordicts.
+Pytorch optimizers, implemented for tensordicts.
 
 Minimal and easy to modify versions of many pytorch optimizers, made for use with tensordict.
 Instead of iterating over every parameter, just use TD! Fully compatible with torch autograd.
